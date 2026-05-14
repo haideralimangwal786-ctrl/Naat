@@ -1,0 +1,17 @@
+{
+  "name": "Naat Player Premium",
+  "short_name": "NaatPlayer",
+  "description": "Premium Islamic Audio Experience with Offline Support",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#061d12",
+  "theme_color": "#1de87a",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

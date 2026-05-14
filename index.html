@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#061d12">
+    <link rel="manifest" href="manifest.json">
+    <title>🎵 Naat Player — Premium Islamic Audio Experience</title>
+    <meta name="description" content="A private, persistent, and premium Islamic Naat Player. Upload, manage, and listen to your favorite Naats with high-fidelity audio and beautiful visualizer.">
+    <meta name="keywords" content="Naat Player, Islamic Audio, MP3 Player, Private Playlist, Online Naat, Responsive Audio Player">
+    <meta name="author" content="Naat Player Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Naat Player — Premium Islamic Audio">
+    <meta property="og:description" content="Listen to your favorite Naats in a beautiful, private, and persistent audio player.">
+    <meta property="og:image" content="naat_player_favicon_1778717201093.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Naat Player — Premium Islamic Audio">
+    <meta property="twitter:description" content="Listen to your favorite Naats in a beautiful, private, and persistent audio player.">
+    <meta property="twitter:image" content="naat_player_favicon_1778717201093.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+<!-- Background -->
+<div class="bg" aria-hidden="true">
+    <div class="bg-g1"></div>
+    <div class="bg-g2"></div>
+</div>
+
+<!-- ══════════════════════════════════
+     LOGIN OVERLAY
+══════════════════════════════════ -->
+<div class="auth-overlay" id="authOverlay">
+    <div class="auth-card">
+
+        <!-- Logo -->
+        <div class="auth-logo">
+            <div class="auth-logo-icon"><i class="ri-music-2-fill"></i></div>
+            <div>
+                <h2>Naat Player</h2>
+                <p class="auth-bismillah" lang="ar">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="auth-tabs">
+            <button class="auth-tab active" id="tabLogin" onclick="switchTab('login')">Sign In</button>
+            <button class="auth-tab" id="tabRegister" onclick="switchTab('register')">Create Account</button>
+        </div>
+
+        <!-- Error message -->
+        <div id="authError" class="auth-error hidden">
+            <i class="ri-error-warning-fill"></i>
+            <span id="authErrorMsg">Error</span>
+        </div>
+
+        <!-- Login Form -->
+        <div id="formLogin">
+            <div class="auth-field">
+                <label for="loginUser"><i class="ri-user-line"></i> Username</label>
+                <input type="text" id="loginUser" placeholder="Enter your username"
+                       autocomplete="username" oninput="hideAuthError()">
+            </div>
+            <div class="auth-field">
+                <label for="loginPass"><i class="ri-lock-line"></i> Password</label>
+                <div class="pass-wrap">
+                    <input type="password" id="loginPass" placeholder="Enter your password"
+                           autocomplete="current-password" oninput="hideAuthError()">
+                    <button type="button" class="eye-btn" onclick="togglePass('loginPass', this)" aria-label="Show password">
+                        <i class="ri-eye-line"></i>
+                    </button>
+                </div>
+            </div>
+            <button class="auth-submit" id="loginBtn" onclick="doLogin()">
+                <i class="ri-login-circle-fill"></i> Sign In
+            </button>
+        </div>
+
+        <!-- Register Form -->
+        <div id="formRegister" class="hidden">
+            <div class="auth-field">
+                <label for="regUser"><i class="ri-user-add-line"></i> Username</label>
+                <input type="text" id="regUser" placeholder="Choose a username"
+                       autocomplete="username" oninput="hideAuthError()">
+            </div>
+            <div class="auth-field">
+                <label for="regPass"><i class="ri-lock-password-line"></i> Password</label>
+                <div class="pass-wrap">
+                    <input type="password" id="regPass" placeholder="Choose a password"
+                           autocomplete="new-password" oninput="hideAuthError()">
+                    <button type="button" class="eye-btn" onclick="togglePass('regPass', this)" aria-label="Show password">
+                        <i class="ri-eye-line"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="auth-field">
+                <label for="regPass2"><i class="ri-lock-2-line"></i> Confirm Password</label>
+                <div class="pass-wrap">
+                    <input type="password" id="regPass2" placeholder="Repeat password"
+                           autocomplete="new-password" oninput="hideAuthError()">
+                    <button type="button" class="eye-btn" onclick="togglePass('regPass2', this)" aria-label="Show password">
+                        <i class="ri-eye-line"></i>
+                    </button>
+                </div>
+            </div>
+            <button class="auth-submit" id="registerBtn" onclick="doRegister()">
+                <i class="ri-user-add-fill"></i> Create Account
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<!-- ══════════════════════════════════
+     MAIN APP (hidden until login)
+══════════════════════════════════ -->
+<div class="app hidden" id="mainApp">
+
+    <!-- Global Branding -->
+    <header class="app-header">
+        <div class="app-logo">
+            <i class="ri-music-fill"></i>
+        </div>
+        <div class="app-title">
+            <h1><i class="ri-music-2-line title-ico"></i> Naat Player</h1>
+            <p>Premium Islamic Audio Experience</p>
+        </div>
+    </header>
+
+    <!-- ══ PLAYER ══ -->
+    <div class="player">
+
+        <!-- Top bar: Bismillah + User -->
+        <div class="player-topbar">
+            <div class="bismillah">
+                <span class="b-line"></span>
+                <span class="b-text" lang="ar">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</span>
+                <span class="b-line"></span>
+            </div>
+            <div class="user-chip" id="userChip">
+                <i class="ri-user-fill"></i>
+                <span id="userChipName">User</span>
+                <button class="logout-btn" onclick="doLogout()" title="Logout" aria-label="Logout">
+                    <i class="ri-logout-circle-r-line"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Art -->
+        <div class="art-zone">
+            <div class="art-ring ar1"></div>
+            <div class="art-ring ar2"></div>
+            <div class="art-disc" id="artDisc">
+                <div class="art-icon-wrap">
+                    <i class="ri-music-fill art-mosque-ico"></i>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Info -->
+        <div class="info">
+            <p class="info-badge"><i class="ri-headphone-fill"></i> Now Playing</p>
+            <div class="info-title-wrap">
+                <h1 class="info-title" id="infoTitle">Select a Naat</h1>
+            </div>
+            <p class="info-sub" id="infoSub">No file loaded</p>
+        </div>
+
+        <!-- Status + Viz -->
+        <div class="sv-row">
+            <div class="status-tag">
+                <span class="st-dot" id="stDot"></span>
+                <span class="st-txt" id="stTxt">Ready</span>
+            </div>
+            <div class="viz" id="vizEl" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+
+        <!-- Seek -->
+        <div class="seek-row">
+            <time class="t" id="tCur">0:00</time>
+            <div class="seek" id="seekEl">
+                <div class="seek-bg"></div>
+                <div class="seek-fill" id="seekFill"></div>
+                <div class="seek-dot" id="seekDot"></div>
+            </div>
+            <time class="t end" id="tEnd">0:00</time>
+        </div>
+
+        <!-- Volume -->
+        <div class="vol-row">
+            <button class="vbtn" id="muteBtn" aria-label="Mute">
+                <i class="ri-volume-up-fill" id="volIco"></i>
+            </button>
+            <div class="vol-rail">
+                <div class="vol-fill" id="volFill"></div>
+                <input type="range" id="volSlider" min="0" max="100" value="80"
+                       title="Volume" aria-label="Volume">
+            </div>
+            <span class="v-pct" id="vPct">80%</span>
+        </div>
+
+        <!-- Controls -->
+        <div class="ctrls">
+            <button class="cb" id="shuffleBtn" aria-label="Shuffle" title="Shuffle (S)">
+                <i class="ri-shuffle-line" id="shuffleIco"></i>
+            </button>
+            <button class="cb" id="prevBtn" aria-label="Previous" title="Previous">
+                <i class="ri-skip-back-fill"></i>
+            </button>
+            <button class="cb play" id="playBtn" aria-label="Play or Pause" title="Play/Pause (Space)">
+                <i class="ri-play-fill" id="playIco"></i>
+            </button>
+            <button class="cb" id="nextBtn" aria-label="Next" title="Next">
+                <i class="ri-skip-forward-fill"></i>
+            </button>
+            <button class="cb" id="loopBtn" aria-label="Loop" title="Loop (L)">
+                <i class="ri-repeat-line" id="loopIco"></i>
+            </button>
+        </div>
+
+        <!-- Add Button -->
+        <button class="add-btn" onclick="document.getElementById('fileInput').click()">
+            <i class="ri-folder-music-fill"></i>
+            <span>Add Naats to Playlist</span>
+        </button>
+        <input type="file" id="fileInput" accept="audio/*" multiple
+               style="display:none" title="Select audio files" aria-label="Select naat files">
+
+    </div>
+
+    <!-- ══ PLAYLIST ══ -->
+    <div class="playlist">
+
+        <div class="pl-top">
+            <div class="pl-h">
+                <i class="ri-music-2-fill"></i>
+                <span>My Playlist</span>
+            </div>
+            <span class="pl-badge" id="plBadge">0 tracks</span>
+        </div>
+
+        <div class="pl-search">
+            <i class="ri-search-line" aria-hidden="true"></i>
+            <input type="text" id="searchInput" placeholder="Search naats..."
+                   autocomplete="off" title="Search" aria-label="Search">
+            <button id="clearBtn" class="hidden" aria-label="Clear search">
+                <i class="ri-close-line"></i>
+            </button>
+        </div>
+
+        <ul class="pl-list" id="plList" role="list"></ul>
+
+        <div class="shortcuts">
+            <span><kbd>Space</kbd> Play</span>
+            <span><kbd>←</kbd><kbd>→</kbd> Seek</span>
+            <span><kbd>M</kbd> Mute</span>
+            <span><kbd>L</kbd> Loop</span>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="js/index.js"></script>
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then(reg => console.log('Offline support ready!'))
+                .catch(err => console.log('Offline setup failed', err));
+        });
+    }
+</script>
+</body>
+</html>

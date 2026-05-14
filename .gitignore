@@ -1,0 +1,20 @@
+# IDE / Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Node (if any)
+node_modules/
+npm-debug.log*
+
+# Local media (optional - if you don't want to push your testing mp3s)
+# images/*.mp3
+# images/*.webp (unless they are part of UI)
