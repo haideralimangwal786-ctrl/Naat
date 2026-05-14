@@ -604,6 +604,9 @@ kbd { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1
     .playlist { width: 100%; max-width: 420px; height: 400px; }
     .art-zone { width: 185px; height: 185px; }
     .art-disc { width: 162px; height: 162px; }
+    
+    /* Make delete icons always visible on mobile/touch */
+    .pl-del { opacity: 1 !important; color: var(--gold3); }
 }
 
 /* Mobile ≤ 480px */
