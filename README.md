@@ -71,36 +71,49 @@ Naat Player Landing Page
 
 ---
 
-## 💻 How to Run Project on PC (Important)
+## 💻 How to Run Project on PC
 
 If someone downloads this project, follow these steps:
 
-✔ Step 1: Download or Clone Project
+### ✔ Step 1: Download or Clone Project
+
+```bash
 git clone https://github.com/your-username/naat-player.git
+```
 
-OR download ZIP and extract it.
+Or download the ZIP file and extract it.
 
-✔ Step 2: Open Project Folder
+---
 
-Open extracted folder in:
+### ✔ Step 2: Open Project Folder
 
-VS Code (Recommended)
-OR
-Any code editor
-✔ Step 3: Run Project
-👉 Method 1 (Easiest)
-Double click index.html
-Project will open in browser
-👉 Method 2 (Recommended for better experience)
+Open the extracted project folder in:
 
-Use Live Server:
+- VS Code (Recommended)
+- Any code editor
 
-Install Live Server extension in VS Code
-Right-click index.html
-Click “Open with Live Server”
-✔ Step 4: Done 🎉
+---
 
-Project will run in browser locally.
+### ✔ Step 3: Run Project
+
+#### 👉 Method 1 (Easiest)
+
+- Double-click `index.html`
+- The project will open in your browser
+
+#### 👉 Method 2 (Recommended)
+
+Use Live Server in VS Code:
+
+1. Install the **Live Server** extension
+2. Right-click `index.html`
+3. Select **Open with Live Server**
+
+---
+
+### ✔ Step 4: Done 🎉
+
+The project will now run locally in your browser.
 
 ## 👨‍💻 Developer
 
