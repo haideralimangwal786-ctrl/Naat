@@ -10,6 +10,12 @@ Premium Naat Player is a feature-rich web application built using modern web tec
 
 ---
 
+## 🌐 Live Demo
+
+https://naat-coral.vercel.app/
+
+---
+
 ## 🛠️ Technologies Used
 
 - **HTML5** – Semantic structure and layout  
@@ -51,20 +57,50 @@ Premium Naat Player is a feature-rich web application built using modern web tec
 
 ## 📸 Screenshots
 <img width="1920" height="889" alt="screencapture-naat-coral-vercel-app-2026-06-19-10_16_42" src="https://github.com/user-attachments/assets/08ab25d9-f2d5-43b1-84eb-c38fca573f96" />
-## Login
+Login
 
 ---
 
 <img width="1920" height="889" alt="screencapture-naat-coral-vercel-app-2026-06-19-10_17_43" src="https://github.com/user-attachments/assets/5190f0ed-30ad-40a5-b2fd-c3ca2fd26231" />
-## Signup
+Signup
 
 ---
 
 <img width="1920" height="1344" alt="screencapture-naat-coral-vercel-app-2026-06-19-10_18_15" src="https://github.com/user-attachments/assets/93befdc1-866e-4620-aa83-f51e6ff0d1d1" />
-## Naat Player Landing Page
-
+Naat Player Landing Page
 
 ---
+
+## 💻 How to Run Project on PC (Important)
+
+If someone downloads this project, follow these steps:
+
+✔ Step 1: Download or Clone Project
+git clone https://github.com/your-username/naat-player.git
+
+OR download ZIP and extract it.
+
+✔ Step 2: Open Project Folder
+
+Open extracted folder in:
+
+VS Code (Recommended)
+OR
+Any code editor
+✔ Step 3: Run Project
+👉 Method 1 (Easiest)
+Double click index.html
+Project will open in browser
+👉 Method 2 (Recommended for better experience)
+
+Use Live Server:
+
+Install Live Server extension in VS Code
+Right-click index.html
+Click “Open with Live Server”
+✔ Step 4: Done 🎉
+
+Project will run in browser locally.
 
 ## 👨‍💻 Developer
 
